@@ -1,7 +1,9 @@
-class LogAnalyzer:
+from log-observer import LogObserver
+
+class LogAnalyzer():
     
-    def __init__(self, log_file):
-        self.log_fil = log_file
+    def __init__(self)):
+        super().__init__()
         self._observers : list[LogObserver] = []
 
     def observers(self) -> list['LogObserver'] : 
@@ -17,5 +19,8 @@ class LogAnalyzer:
     def notify_obs(self) -> None :
         for obs in self._observers :
             obs.update(self)
-            
+
+    def analyze_line(self) -> None : 
+        self.notify_obs()
+
 
